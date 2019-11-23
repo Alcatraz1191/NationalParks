@@ -1,0 +1,82 @@
+﻿@model NationalParks.Models.ParksModel
+
+<h1>Parks</h1>
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            states
+        </th>
+        <th>
+            latLong
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            designation
+        </th>
+        <th>
+            parkCode
+        </th>
+        <th>
+            directionsInfo
+        </th>
+        <th>
+            directionsUrl
+        </th>
+        <th>
+            fullName
+        </th>
+        <th>
+            url
+        </th>
+        <th>
+            weatherInfo
+        </th>
+        <th>
+            name
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.data)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.states)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.latLong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parkCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.directionsInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.directionsUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.weatherInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+        </tr>
+    }
+
+</table>
