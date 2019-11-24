@@ -73,3 +73,7 @@ C:\Users\shryg\source\repos\NationalParks\NationalParks\bin\Microsoft.CodeDom.Pr
 C:\Users\shryg\source\repos\NationalParks\NationalParks\obj\Debug\NationalParks.csproj.CopyComplete
 C:\Users\shryg\source\repos\NationalParks\NationalParks\obj\Debug\NationalParks.dll
 C:\Users\shryg\source\repos\NationalParks\NationalParks\obj\Debug\NationalParks.pdb
+C:\Users\shryg\source\repos\NationalParks\NationalParks\bin\EntityFramework.dll
+C:\Users\shryg\source\repos\NationalParks\NationalParks\bin\EntityFramework.SqlServer.dll
+C:\Users\shryg\source\repos\NationalParks\NationalParks\bin\EntityFramework.xml
+C:\Users\shryg\source\repos\NationalParks\NationalParks\bin\EntityFramework.SqlServer.xml

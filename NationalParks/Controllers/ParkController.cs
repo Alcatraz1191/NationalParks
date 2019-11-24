@@ -14,14 +14,22 @@ namespace NationalParks.Controllers
         // GET: Park
         public ActionResult Index()
         {
-            return View();
-        }
-        public ActionResult ParksModel()
-        {
             APIHandler webHandler = new APIHandler();
             ParksModel parks = webHandler.GetParks();
             ParkRepo parkRepo = new ParkRepo();
 
+            foreach (Parks item in parks.data)
+            {
+                parkRepo.AddPark(item);
+            }
+            return View();
+        }
+
+        public ActionResult ParksModel()
+        {
+            ParkRepo parkRepo = new ParkRepo();
+            ParksModel parks = new ParksModel();
+            parks.data = parkRepo.GetAllParks();
             return View(parks);
         }
 

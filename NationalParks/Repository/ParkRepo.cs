@@ -18,12 +18,14 @@ namespace NationalParks.Repository
             string constr = ConfigurationManager.ConnectionStrings["getconn"].ToString();
             con = new SqlConnection(constr);
         }
+
         public bool AddPark(Parks p)
         {
             connection();
             SqlCommand com = new SqlCommand("AddNewParkDetails", con);
             com.CommandType = CommandType.StoredProcedure;
-            com.Parameters.AddWithValue("@state", p.states);
+            com.Parameters.AddWithValue("@id", p.id);
+            com.Parameters.AddWithValue("@states", p.states);
             com.Parameters.AddWithValue("@latLong", p.latLong);
             com.Parameters.AddWithValue("@description", p.description);
             com.Parameters.AddWithValue("@designation", p.designation);
@@ -46,10 +48,10 @@ namespace NationalParks.Repository
                 return false;
             }
         }
-        public ParksModel GetAllParks()
+        public List<Parks> GetAllParks()
         {
             connection();
-            ParksModel ParkList = new ParksModel();
+            List<Parks> ParkList = new List<Parks>();
 
 
             SqlCommand com = new SqlCommand("GetParks", con);
@@ -64,7 +66,7 @@ namespace NationalParks.Repository
             foreach (DataRow dr in dt.Rows)
             {
 
-                ParkList.data.Add(
+                ParkList.Add(
 
                     new Parks
                     {

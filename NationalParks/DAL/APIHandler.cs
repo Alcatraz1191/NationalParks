@@ -15,7 +15,7 @@ namespace NationalParks.APIHandlerManager
         // Obtaining the API key is easy. The same key should be usable across the entire
         // data.gov developer network, i.e. all data sources on data.gov.
         // https://www.nps.gov/subjects/developer/get-started.
-        static string BASE_URL = "https://developer.nps.gov/api/v1/parks?parkCode=acad,dena,cabr,cave,grca,jotr,yose,zion,yell,glac";
+        static string BASE_URL = "https://developer.nps.gov/api/v1/";
         static string API_KEY = "WJQC93zgDbpqe5Fzg6lketshMFwj4DjtgjcQD0ug"; //Add your API key here inside 
         HttpClient httpClient;
         /// <summary>
@@ -37,7 +37,7 @@ namespace NationalParks.APIHandlerManager
         /// <returns></returns>
         public ParksModel GetParks()
         {
-            string NATIONAL_PARK_API_PATH = BASE_URL+"/parks?parkCode=acad,dena,cabr,cave,grca,jotr,yose,zion,yell,glac";
+            string NATIONAL_PARK_API_PATH = BASE_URL+"parks?parkCode=acad,dena,cabr,cave,grca,jotr,yose,zion,yell,glac";
             string parksData = "";
             ParksModel parks = null;
             httpClient.BaseAddress = new Uri(NATIONAL_PARK_API_PATH);

@@ -16,7 +16,7 @@ namespace NationalParks
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Park", action = "ParksModel", id = UrlParameter.Optional }
+                defaults: new { controller = "Park", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
