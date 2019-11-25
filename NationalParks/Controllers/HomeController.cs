@@ -19,7 +19,7 @@ namespace NationalParks.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Let's take a look at the development team!";
 
             return View();
         }

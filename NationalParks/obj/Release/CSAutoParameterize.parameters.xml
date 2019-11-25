@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="ParkContext-Web.config Connection String" description="ParkContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=NationalParks2;Integrated Security=SSPI;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\shryg\\source\\repos\\NationalParks\\NationalParks\\obj\\Release\\Package\\PackageTmp\\Views\\Web\.config$" match="/configuration/connectionStrings/add[@name='ParkContext']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\shryg\\source\\repos\\NationalParks\\NationalParks\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ParkContext']/@connectionString" />
+  </parameter>
+</parameters>

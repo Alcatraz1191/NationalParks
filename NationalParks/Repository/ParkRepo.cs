@@ -19,7 +19,7 @@ namespace NationalParks.Repository
             con = new SqlConnection(constr);
         }
 
-        public bool AddPark(Parks p)
+        public bool AddPark(Park p)
         {
             connection();
             SqlCommand com = new SqlCommand("AddNewParkDetails", con);
@@ -48,10 +48,10 @@ namespace NationalParks.Repository
                 return false;
             }
         }
-        public List<Parks> GetAllParks()
+        public List<Park> GetAllParks()
         {
             connection();
-            List<Parks> ParkList = new List<Parks>();
+            List<Park> ParkList = new List<Park>();
 
 
             SqlCommand com = new SqlCommand("GetParks", con);
@@ -68,7 +68,7 @@ namespace NationalParks.Repository
 
                 ParkList.Add(
 
-                    new Parks
+                    new Park
                     {
                         states = Convert.ToString(dr["states"]),
                         latLong = Convert.ToString(dr["latLong"]),

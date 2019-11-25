@@ -29,6 +29,8 @@ namespace NationalParks.APIHandlerManager
             httpClient.DefaultRequestHeaders.Accept.Add(
                 new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
         }
+    
+         
         /// <summary>
         /// Method to receive data from API end point as a collection of objects
         /// 
@@ -40,18 +42,25 @@ namespace NationalParks.APIHandlerManager
             string NATIONAL_PARK_API_PATH = BASE_URL+"parks?parkCode=acad,dena,cabr,cave,grca,jotr,yose,zion,yell,glac";
             string parksData = "";
             ParksModel parks = null;
-            httpClient.BaseAddress = new Uri(NATIONAL_PARK_API_PATH);
+            //httpClient.BaseAddress = new Uri(NATIONAL_PARK_API_PATH);
             // It can take a few requests to get back a prompt response, if the API has not received
             //  calls in the recent past and the server has put the service on hibernation
             try
             {
-                HttpResponseMessage response = httpClient.GetAsync(NATIONAL_PARK_API_PATH).GetAwaiter().GetResult();
-                parksData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                if (!parksData.Equals(""))
+                using (var httpClient = new HttpClient { BaseAddress = new Uri(NATIONAL_PARK_API_PATH) })
                 {
-                    
-                    // JsonConvert is part of the NewtonSoft.Json Nuget package
-                    parks = JsonConvert.DeserializeObject<ParksModel>(parksData);
+                    httpClient.DefaultRequestHeaders.Accept.Clear();
+                    httpClient.DefaultRequestHeaders.Add("X-Api-Key", API_KEY);
+                    httpClient.DefaultRequestHeaders.Accept.Add(
+                        new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage response = httpClient.GetAsync(NATIONAL_PARK_API_PATH).GetAwaiter().GetResult();
+                    parksData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    if (!parksData.Equals(""))
+                    {
+
+                        // JsonConvert is part of the NewtonSoft.Json Nuget package
+                        parks = JsonConvert.DeserializeObject<ParksModel>(parksData);
+                    }
                 }
             }
             catch (Exception e)
@@ -62,6 +71,41 @@ namespace NationalParks.APIHandlerManager
             }
                 return parks;
             
+        }
+        public VisitorModel GetVisitorCentres()
+        {
+            string NATIONAL_PARK_API_PATH = BASE_URL + "visitorcenters?parkCode=acad,dena,cabr,cave,grca,jotr,yose,zion,yell,glac";
+            string parksData = "";
+            VisitorModel visitors = null;
+            //httpClient.BaseAddress = new Uri(NATIONAL_PARK_API_PATH);
+            // It can take a few requests to get back a prompt response, if the API has not received
+            //  calls in the recent past and the server has put the service on hibernation
+            try
+            {
+                using (var httpClient = new HttpClient { BaseAddress = new Uri(NATIONAL_PARK_API_PATH) })
+                {
+                    httpClient.DefaultRequestHeaders.Accept.Clear();
+                    httpClient.DefaultRequestHeaders.Add("X-Api-Key", API_KEY);
+                    httpClient.DefaultRequestHeaders.Accept.Add(
+                        new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage response = httpClient.GetAsync(NATIONAL_PARK_API_PATH).GetAwaiter().GetResult();
+                    parksData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    if (!parksData.Equals(""))
+                    {
+
+                        // JsonConvert is part of the NewtonSoft.Json Nuget package
+                        visitors = JsonConvert.DeserializeObject<VisitorModel>(parksData);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                // This is a useful place to insert a breakpoint and observe the error message
+                Console.WriteLine(e.Message);
+
+            }
+            return visitors;
+
         }
     }
 }
